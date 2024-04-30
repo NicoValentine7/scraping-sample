@@ -6,12 +6,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-# WebDriverのセットアップ
-service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service)
 
-# テーマをクリックしてサブテーマを取得する処理を追加
-try:
+def fetch_themes(driver):
+    print("🚀 theme.pyのスクリプトを実行します...")
     url = "https://shikiho.toyokeizai.net/theme"
     driver.get(url)
     time.sleep(2)  # ページが完全にロードされるまで待機
@@ -41,6 +38,3 @@ try:
         )
         for sub_element in sub_theme_elements:
             print("  -", sub_element.text)  # サブテーマを表示
-
-finally:
-    driver.quit()
